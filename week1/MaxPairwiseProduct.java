@@ -2,16 +2,22 @@ import java.util.*;
 import java.io.*;
 
 public class MaxPairwiseProduct {
-    static int getMaxPairwiseProduct(int[] numbers) {
-        int result = 0;
+    static long getMaxPairwiseProduct(int[] numbers) {
+        long result = 0;
+        int first_max_number = -1;
+        int second_max_number = -1;
         int n = numbers.length;
         for (int i = 0; i < n; ++i) {
-            for (int j = i + 1; j < n; ++j) {
-                if (numbers[i] * numbers[j] > result) {
-                    result = numbers[i] * numbers[j];
-                }
+            if (numbers[i] > first_max_number) {
+                first_max_number = numbers[i];
             }
         }
+        for (int i = 0; i < n; ++i) {
+            if ((numbers[i] < first_max_number) && (numbers[i] > second_max_number)) {
+                second_max_number = numbers[i];
+            }
+        }
+        result = (long)first_max_number * second_max_number;
         return result;
     }
 
@@ -52,5 +58,4 @@ public class MaxPairwiseProduct {
             return Integer.parseInt(next());
         }
     }
-
 }
