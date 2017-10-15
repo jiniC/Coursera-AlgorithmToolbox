@@ -7,13 +7,13 @@ public class MaxPairwiseProduct {
         int first_max_index = 0;
         int second_max_index = 0;
         int n = numbers.length;
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; i++) {
             if ((first_max_index==0) || numbers[i] > numbers[first_max_index]) {
                 first_max_index = i;
             }
         }
-        for (int i = 0; i < n; ++i) {
-            if ((i != first_max_index) || numbers[i] > numbers[second_max_index]) {
+        for (int i = 0; i < n; i++) {
+            if ((i != first_max_index) && numbers[i] > numbers[second_max_index]) {
                 second_max_index = i;
             }
         }
