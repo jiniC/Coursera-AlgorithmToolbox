@@ -4,20 +4,20 @@ import java.io.*;
 public class MaxPairwiseProduct {
     static long getMaxPairwiseProduct(int[] numbers) {
         long result = 0;
-        int first_max_number = -1;
-        int second_max_number = -1;
+        int first_max_index = 0;
+        int second_max_index = 0;
         int n = numbers.length;
         for (int i = 0; i < n; ++i) {
-            if (numbers[i] > first_max_number) {
-                first_max_number = numbers[i];
+            if ((first_max_index==0) || numbers[i] > numbers[first_max_index]) {
+                first_max_index = i;
             }
         }
         for (int i = 0; i < n; ++i) {
-            if ((numbers[i] < first_max_number) && (numbers[i] > second_max_number)) {
-                second_max_number = numbers[i];
+            if ((i != first_max_index) || numbers[i] > numbers[second_max_index]) {
+                second_max_index = i;
             }
         }
-        result = (long)first_max_number * second_max_number;
+        result = (long)numbers[first_max_index] * numbers[second_max_index];
         return result;
     }
 
